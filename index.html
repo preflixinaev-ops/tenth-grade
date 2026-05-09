@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Untuk Kalian</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    body{
+      min-height:100vh;
+      background:linear-gradient(135deg,#0f172a,#111827,#1e293b);
+      overflow-x:hidden;
+      font-family:'Poppins',sans-serif;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+      color:white;
+    }
+    .background-glow{
+      position:fixed; width:500px; height:500px;
+      background:rgba(255,255,255,0.05); filter:blur(120px);
+      border-radius:50%; top:-100px; left:-100px;
+      animation:glow 8s infinite alternate; z-index:0;
+    }
+    @keyframes glow{ from{ transform:scale(1); } to{ transform:scale(1.2); } }
+    
+    .container{ position:relative; width:100%; max-width:850px; z-index:2; text-align:center; }
+    
+    .open-box, .letter{
+      backdrop-filter:blur(20px); background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12); padding:40px 25px;
+      border-radius:28px; box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .title{ font-size:48px; font-family:'Cormorant Garamond',serif; margin-bottom:10px; }
+    .subtitle{ font-size:15px; opacity:0.7; margin-bottom:35px; }
+
+    .open-btn, .send-btn{
+      border:none; padding:15px 40px; border-radius:999px;
+      background:white; color:#111827; font-size:15px; font-weight:600;
+      cursor:pointer; transition:0.3s;
+    }
+    .open-btn:hover, .send-btn:hover{ transform:scale(1.05); }
+
+    .letter{ display:none; animation:fadeIn 1.2s ease; margin-top:30px; text-align:left; }
+    @keyframes fadeIn{ from{ opacity:0; transform:translateY(20px); } to{ opacity:1; transform:translateY(0); } }
+    
+    .letter h2{ font-family:'Cormorant Garamond',serif; font-size:42px; margin-bottom:25px; text-align:center; }
+    
+    /* --- TEKS PESAN UTAMA (KECIL & MINIMALIS) --- */
+    .message{ 
+      font-size: 14px; 
+      line-height: 2.1; 
+      color: rgba(255,255,255,0.8); 
+      white-space: pre-line; 
+      text-align: left;
+      letter-spacing: 0.2px;
+      margin-bottom: 35px;
+    }
+
+    .photo{ margin-top:35px; text-align:center; }
+    .photo img{ width:100%; max-width:500px; border-radius:24px; border:1px solid rgba(255,255,255,0.15); }
+    
+    .footer{ margin-top:30px; font-size:13px; opacity:0.6; text-align:center; }
+
+    /* GUESTBOOK */
+    .guestbook{ margin-top:50px; }
+    .guestbook h3{ font-size:28px; margin-bottom:10px; font-family:'Cormorant Garamond',serif; }
+    
+    input, textarea{
+      width:100%; padding:15px; margin-bottom:15px; border-radius:18px;
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1);
+      color:white; font-family:inherit; outline:none; font-size:14px;
+    }
+
+    .message-card{
+      margin-top:20px; padding:20px; border-radius:20px;
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08);
+    }
+    .card-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+    .reply-trigger{ color:#38bdf8; cursor:pointer; font-size:13px; font-weight:500; }
+
+    /* MODAL */
+    #commentModal{
+      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.85); z-index:1000; justify-content:center; align-items:flex-end;
+    }
+    .modal-content{
+      width:100%; max-width:500px; background:#1e293b;
+      border-radius:24px 24px 0 0; padding:25px;
+      max-height:85vh; display:flex; flex-direction:column;
+    }
+
+    /* MUSIC PLAYER */
+    .music-control {
+      position: fixed; bottom: 25px; right: 25px; z-index: 2000;
+      display: none; align-items: center; background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px); padding: 8px 15px; border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.2); cursor: pointer;
+    }
+
+    @media(max-width:600px){
+      .title{ font-size:36px; }
+      .letter h2{ font-size:32px; }
+      .message{ font-size: 13px; } /* Di HP sedikit lebih kecil lagi agar proporsional */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-glow"></div>
+
+  <div class="music-control" id="musicToggle">
+    <div class="music-icon" id="musicStatus" style="width:30px; height:30px; background:white; color:#0f172a; border-radius:50%; display:flex; justify-content:center; align-items:center; margin-right:10px; font-size:12px;">II</div>
+    <div style="font-size:11px; font-weight:500; letter-spacing:1px;">MUSIC</div>
+  </div>
+
+  <div class="container">
+    <div class="open-box" id="startBox">
+      <div class="title">Untuk Kalian</div>
+      <div class="subtitle">sedikit pesan sebelum semuanya berubah</div>
+      <button class="open-btn" onclick="openLetter()">Buka Surat</button>
+    </div>
+
+    <div class="letter" id="letterBox">
+      <h2>Terima Kasih.</h2>
+      <div class="message">jujur, rasanya aneh banget bentar lagi kita bakal kepisah sama kelas masing masing. rasanya baru kemarin kita ketemu, ngobrol, ketawa bareng, saling ganggu, saling bantu, sampe akhirnya tanpa sadar udah sejauh ini.
+
+makasih ya buat semua cerita yang pernah kita lewatin. buat semua hal kecil yang mungkin nanti bakal jadi hal yang paling dirinduin.
+
+semoga nanti, walaupun kita udah punya jalan masing masing, kita tetep jadi orang orang baik dengan versi terbaik dari diri kita.
+
+dan semoga suatu hari nanti, kita bisa ketemu lagi dengan cerita yang lebih indah.
+
+— @farid untuk kalian, good luck in the future!</div>
+      
+      <div class="photo"><img src="photo.jpg" alt="foto kelas"></div>
+      <div class="footer">see you on another beautiful chapter.</div>
+
+      <div class="guestbook">
+        <h3>Pesan Untuk Kelas ✉️</h3>
+        <input type="text" id="name" placeholder="Nama kamu...">
+        <textarea id="messageInput" placeholder="Tulis sesuatu buat kelas kita..."></textarea>
+        <button class="send-btn" id="sendBtn" style="width:100%">Kirim Pesan</button>
+        <div id="messages"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BALASAN -->
+  <div id="commentModal">
+    <div class="modal-content">
+      <div class="modal-header" style="display:flex; justify-content:space-between; margin-bottom:20px;">
+        <span style="font-weight:600; font-size:16px;">Balasan</span>
+        <span style="cursor:pointer" onclick="closeModal()">✕</span>
+      </div>
+      <div id="modalReplies" style="flex:1; overflow-y:auto; margin-bottom:20px;"></div>
+      <div>
+        <input type="text" id="modalReplyName" placeholder="Nama kamu...">
+        <textarea id="modalReplyText" style="min-height:80px" placeholder="Balas pesan ini..."></textarea>
+        <button class="send-btn" style="width:100%" id="modalSendBtn">Kirim Balasan</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bgMusic" src="music.mp3" loop></audio>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBVSNnI0ZUE7QP9J0KLJ8ulGEp58RQU-v8",
+      authDomain: "farid-dda74.firebaseapp.com",
+      projectId: "farid-dda74",
+      storageBucket: "farid-dda74.firebasestorage.app",
+      messagingSenderId: "240445607623",
+      appId: "1:240445607623:web:622f8d48c0236660c4f8e2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    let activeMessageId = null;
+    let unsubscribeReplies = null;
+
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicToggle');
+    const musicStatus = document.getElementById('musicStatus');
+
+    window.openLetter = () => {
+      document.getElementById('startBox').style.display = 'none';
+      document.getElementById('letterBox').style.display = 'block';
+      musicBtn.style.display = 'flex';
+      music.play().catch(e => console.log("Autoplay dicegah browser"));
+    };
+
+    musicBtn.onclick = () => {
+      if (music.paused) { music.play(); musicStatus.innerText = "II"; }
+      else { music.pause(); musicStatus.innerText = "▶"; }
+    };
+
+    document.getElementById("sendBtn").onclick = async () => {
+      const n = document.getElementById('name'), m = document.getElementById('messageInput');
+      if(!n.value || !m.value) return alert("Isi dulu!");
+      await addDoc(collection(db, "messages"), { name: n.value, message: m.value, createdAt: serverTimestamp() });
+      n.value = ""; m.value = "";
+    };
+
+    onSnapshot(query(collection(db, "messages"), orderBy("createdAt", "desc")), (snap) => {
+      const container = document.getElementById('messages');
+      container.innerHTML = "";
+      snap.forEach(doc => {
+        const d = doc.data();
+        const card = document.createElement('div');
+        card.className = 'message-card';
+        card.innerHTML = `
+          <div class="card-header"><strong>${d.name}</strong> <span class="reply-trigger" onclick="openCommentModal('${doc.id}')">Balas</span></div>
+          <p style="text-align:left; font-size:13px; opacity:0.9;">${d.message}</p>
+        `;
+        container.appendChild(card);
+      });
+    });
+
+    window.openCommentModal = (id) => {
+      activeMessageId = id;
+      document.getElementById('commentModal').style.display = 'flex';
+      const list = document.getElementById('modalReplies');
+      list.innerHTML = "Memuat...";
+
+      if(unsubscribeReplies) unsubscribeReplies();
+      unsubscribeReplies = onSnapshot(query(collection(db, "messages", id, "replies"), orderBy("createdAt", "asc")), (snap) => {
+        list.innerHTML = "";
+        snap.forEach(rdoc => {
+          const rd = rdoc.data();
+          list.innerHTML += `<div class="reply-item" style="background:rgba(255,255,255,0.03); padding:12px; border-radius:12px; margin-bottom:10px; font-size:13px;"><strong>${rd.name}</strong>${rd.reply}</div>`;
+        });
+        list.scrollTop = list.scrollHeight;
+      });
+    };
+
+    window.closeModal = () => { document.getElementById('commentModal').style.display = 'none'; };
+
+    document.getElementById("modalSendBtn").onclick = async () => {
+      const n = document.getElementById('modalReplyName'), t = document.getElementById('modalReplyText');
+      if(!n.value || !t.value) return alert("Lengkapi!");
+      await addDoc(collection(db, "messages", activeMessageId, "replies"), { name: n.value, reply: t.value, createdAt: serverTimestamp() });
+      t.value = "";
+    };
+  </script>
+</body>
+</html>
