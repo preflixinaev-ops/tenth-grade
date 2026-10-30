@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f0e8">
+  <meta name="description" content="A little website, holding a lifetime of feelings.">
+  <title>THE MOMENT — A Story Made for You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="progress"><span id="progressBar"></span></div>
+  <header class="topbar">
+    <a class="wordmark" href="#home" aria-label="The Moment home">THE MOMENT<span>®</span></a>
+    <div class="topbar-right">
+      <button class="music-toggle" id="musicToggle" aria-label="Toggle background music"><span class="music-bars"><i></i><i></i><i></i><i></i></span><span id="musicLabel">SOUND OFF</span></button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="menu-panel" id="menuPanel" aria-hidden="true">
+    <p class="eyebrow">THE CHAPTERS</p>
+    <a href="#home" data-menu-link>01 <span>Opening</span></a>
+    <a href="#letter" data-menu-link>02 <span>The Letter</span></a>
+    <a href="#memories" data-menu-link>03 <span>Our Memories</span></a>
+    <a href="#unsaid" data-menu-link>04 <span>Things I Never Said</span></a>
+    <a href="#wishes" data-menu-link>05 <span>My Wishes</span></a>
+    <a href="#ending" data-menu-link>06 <span>The Last Page</span></a>
+    <p class="menu-note">A little something, made just for you.</p>
+  </nav>
+
+  <main id="experience">
+    <section class="page hero active" id="home" data-page>
+      <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+      <div class="hero-content">
+        <p class="eyebrow reveal">A PERSONAL COLLECTION OF MOMENTS <span>— 2026</span></p>
+        <div class="hero-rule reveal"></div>
+        <h1 class="hero-title reveal">For <em id="recipientName">Someone</em>,<br>with <em>all my heart.</em></h1>
+        <p class="hero-sub reveal" id="openingSubtitle">Some things deserve more than a message.</p>
+        <button class="primary-button reveal" id="beginButton"><span>ENTER YOUR STORY</span><b>↗</b></button>
+        <div class="hero-bottom reveal"><span>SCROLL TO DISCOVER</span><span class="scroll-line"></span><span>01 / 06</span></div>
+      </div>
+      <div class="hero-side-note">A STORY WORTH KEEPING<br>EST. WITH LOVE</div>
+      <div class="hero-stamp">A<br>DAY<br>TO<br>REMEMBER</div>
+    </section>
+
+    <section class="page letter-section" id="letter" data-page>
+      <div class="section-index reveal">CHAPTER 01 <span>— THE LETTER</span></div>
+      <div class="letter-layout">
+        <div class="letter-intro reveal">
+          <p class="eyebrow">A FEW WORDS, JUST FOR YOU</p>
+          <h2>Before anything<br><em>else…</em></h2>
+          <p class="muted">Take a breath. This little corner of the internet belongs to you for a moment.</p>
+          <div class="tiny-line"></div>
+          <p class="small-note">PLEASE READ THIS<br>WHEN YOU HAVE A MOMENT.</p>
+        </div>
+        <div class="envelope-wrap reveal" id="envelopeWrap">
+          <div class="envelope-shadow"></div>
+          <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the letter">
+            <div class="envelope-back"></div>
+            <div class="letter-paper"><span class="paper-label">A LETTER FOR YOU</span><span class="paper-heart">♡</span></div>
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
+            <div class="wax-seal">M</div>
+          </div>
+          <p class="envelope-hint" id="envelopeHint">TAP THE SEAL TO OPEN</p>
+        </div>
+      </div>
+      <article class="letter-reading" id="letterReading" aria-hidden="true">
+        <div class="reading-top"><span>PERSONAL LETTER</span><span id="letterDate"></span></div>
+        <h3 id="letterTitle">Dear you,</h3>
+        <div class="letter-copy" id="letterContent"></div>
+        <p class="signature" id="signature">With love,</p>
+        <p class="signature-name" id="senderName">Someone</p>
+        <button class="text-button" id="closeLetter">CLOSE LETTER <span>↑</span></button>
+      </article>
+      <div class="section-bottom"><span>02 — THE LETTER</span><a href="#memories" class="next-link">NEXT CHAPTER <b>↓</b></a></div>
+    </section>
+
+    <section class="page memories-section" id="memories" data-page>
+      <div class="section-index reveal">CHAPTER 02 <span>— OUR MEMORIES</span></div>
+      <div class="memories-heading reveal">
+        <p class="eyebrow">LITTLE THINGS, FOREVER KEPT</p>
+        <h2>Every moment<br>left <em>a mark.</em></h2>
+        <p class="muted">A collection of moments I never want to forget.</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
+      <div class="memory-footnote reveal"><span>THE GOOD, THE MESSY, THE BEAUTIFUL.</span><span>ALL OF IT MATTERS.</span></div>
+      <div class="section-bottom"><span>03 — OUR MEMORIES</span><a href="#unsaid" class="next-link">NEXT CHAPTER <b>↓</b></a></div>
+    </section>
+
+    <section class="page unsaid-section" id="unsaid" data-page>
+      <div class="section-index reveal">CHAPTER 03 <span>— THINGS I NEVER SAID</span></div>
+      <div class="unsaid-inner">
+        <p class="eyebrow reveal">SOME FEELINGS LIVE BETWEEN THE LINES</p>
+        <h2 class="unsaid-title reveal">There are things<br>I never found<br>the <em>right words</em> for.</h2>
+        <div class="unsaid-copy reveal" id="unsaidContent"></div>
+        <div class="voice-card reveal" id="voiceCard">
+          <div class="voice-icon">♫</div><div class="voice-meta"><span class="eyebrow">A VOICE NOTE</span><strong>A little something, spoken.</strong><small id="voiceCaption">Press play when you're ready.</small></div>
+          <audio id="voiceAudio" controls preload="none"></audio>
+        </div>
+        <button class="secret-trigger reveal" id="secretTrigger"><span>✳</span> THERE'S ONE MORE THING…</button>
+        <div class="secret-message" id="secretMessage" aria-hidden="true"></div>
+      </div>
+      <div class="section-bottom"><span>04 — THINGS I NEVER SAID</span><a href="#wishes" class="next-link">NEXT CHAPTER <b>↓</b></a></div>
+    </section>
+
+    <section class="page wishes-section" id="wishes" data-page>
+      <div class="wishes-sun"></div>
+      <div class="section-index reveal">CHAPTER 04 <span>— MY WISHES FOR YOU</span></div>
+      <div class="wishes-content">
+        <p class="eyebrow reveal">FOR ALL THE DAYS STILL AHEAD</p>
+        <h2 class="reveal">May life be<br><em>kind to you.</em></h2>
+        <div class="wish-list" id="wishList"></div>
+        <div class="countdown-card reveal" id="countdownCard">
+          <span class="eyebrow">COUNTING DOWN TO YOUR DAY</span>
+          <div class="countdown" id="countdown"><div><b>00</b><small>DAYS</small></div><div><b>00</b><small>HOURS</small></div><div><b>00</b><small>MINUTES</small></div><div><b>00</b><small>SECONDS</small></div></div>
+          <small class="countdown-caption" id="countdownCaption">A day worth celebrating.</small>
+        </div>
+      </div>
+      <div class="section-bottom"><span>05 — MY WISHES</span><a href="#ending" class="next-link">FINAL CHAPTER <b>↓</b></a></div>
+    </section>
+
+    <section class="page ending-section" id="ending" data-page>
+      <div class="ending-stars" aria-hidden="true"></div>
+      <div class="section-index reveal">CHAPTER 05 <span>— THE LAST PAGE</span></div>
+      <div class="ending-content">
+        <p class="eyebrow reveal">AND THAT'S MY LITTLE STORY</p>
+        <h2 class="reveal" id="finalTitle">Some moments<br>stay <em>forever.</em></h2>
+        <p class="ending-message reveal" id="finalMessage">No matter where life takes us, I hope you remember how much this moment means.</p>
+        <div class="final-photo reveal" id="finalPhotoWrap"><img id="finalPhoto" alt="A final memory" src=""><span>ONE FOR THE KEEPS</span></div>
+        <p class="ending-sign reveal">Made with love, by <span id="endingSender">Someone</span>.</p>
+        <div class="ending-actions reveal"><button class="primary-button" id="downloadLetter"><span>DOWNLOAD THE LETTER</span><b>↓</b></button><button class="outline-button" id="replayButton">↺ REPLAY THIS STORY</button></div>
+        <p class="copyright">THE MOMENT® <span>— A LITTLE WEBSITE, HOLDING A LIFETIME OF FEELINGS.</span></p>
+      </div>
+      <div class="section-bottom"><span>06 — THE END, OR A NEW BEGINNING</span><a href="#home" class="next-link">BACK TO BEGINNING <b>↑</b></a></div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button><img id="lightboxImage" alt=""><p id="lightboxCaption"></p></div>
+  <div class="toast" id="toast" role="status"></div>
+  <audio id="backgroundMusic" loop preload="none"></audio>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

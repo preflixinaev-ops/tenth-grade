@@ -1,0 +1,14 @@
+THE MOMENT — TEMPLATE LICENSE (STARTER)
+
+This file is a starter license notice, not legal advice. Replace it with terms reviewed for your business and jurisdiction before commercial distribution.
+
+The purchaser may use and customize the template for personal greeting websites and client projects, subject to the seller's final license terms.
+
+Unless expressly permitted in the seller's final license:
+- Do not resell, redistribute, sublicense or publicly share the unmodified source template as a competing template product.
+- Do not claim ownership of third-party fonts, libraries, services or media.
+- The purchaser is responsible for rights and permissions for all uploaded photos, audio, video, fonts and text.
+- No warranty is provided that the template meets every browser, hosting or accessibility requirement.
+
+Seller: [YOUR STORE / BUSINESS NAME]
+License version: 1.0
